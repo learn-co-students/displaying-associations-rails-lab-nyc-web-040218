@@ -1,8 +1,19 @@
+# <h1> Songs </h1>
+#   <% @songs.each do |song| %>
+#   <li>
+#     <%= link_to song.artist_name, artist_path(song.artist_name) %>
+#     -
+#     <%=link_to song.title, song_path(song)%>
+#   </li>
+#   <% end %>
+
 class SongsController < ApplicationController
   def index
+    @songs = Song.all
   end
 
   def show
+    @song = Song.find(params[:id])
   end
 
   def new
@@ -47,4 +58,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title)
   end
 end
-
